@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.collections.ArrayList
 
 //Main.kts
 fun main(){
@@ -47,10 +48,56 @@ fun main(){
     val coqueteo = if(estadoCivilWhen == "S") "SI" else "NO"
 
     val sumaUno = Suma(1,1)
-    val sumaDos = Suma(null, 1)
+    //val sumaDos = Suma(null, 1)
 
-    Suma.elevarALCuadrado(2)
-    Suma.historialSumas
+    //Suma.elevarALCuadrado(1)
+    println(Suma.historialSumas)
+
+    //ARREGLOS
+
+    //Tipos de arreglos
+
+    //Arreglos estaticos
+    val arregloEstatico: Array<Int> = arrayOf<Int>(1, 2, 3)
+    println(arregloEstatico)
+
+    //Arreglos dinamicos
+    val arregloDinamico: ArrayList<Int> = arrayListOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    println(arregloDinamico)
+    arregloDinamico.add(11)
+    arregloDinamico.add(11)
+    println(arregloDinamico)
+
+    //OPERADORES -> sirven para ambos tipos de arreglos
+
+    //FOR EACH
+    val respuestaForEach: Unit = arregloDinamico
+        .forEach{
+            valorActual: Int ->
+            println("Valor actual: ${valorActual}")
+        }
+    arregloEstatico
+        .forEachIndexed{indice:Int, valorActual:Int ->
+            println("Valor ${valorActual} Indice: ${indice}")
+        }
+    println(respuestaForEach)
+
+    //MAP -> Muta de arreglo
+    //1) Se envia un valor se iteracion
+    //2) Nos devuelve un NUEVO ARREGLO
+
+    val respuestasMap: List<Double> = arregloDinamico
+        .map{valorActual: Int ->
+            return@map valorActual.toDouble() + 100.00
+        }
+
+    println(respuestasMap)
+
+    val respuestasMapDos = arregloDinamico.map { it+15 }
+        .map{valorActual: Int ->
+            return@map valorActual.toDouble() + 100.00
+        }
+    print(respuestasMapDos)
 }
 
 //void imprimirNombre(String nombre){}
@@ -77,7 +124,7 @@ abstract class NumerosJava{
     private val numeroDos: Int
 
     constructor(
-        uno:Int
+        uno:Int,
         dos: Int
     ){ //Bloque de codigo constructor
         this.numeroUno = uno
