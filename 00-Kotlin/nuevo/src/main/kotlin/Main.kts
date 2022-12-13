@@ -98,6 +98,47 @@ fun main(){
             return@map valorActual.toDouble() + 100.00
         }
     print(respuestasMapDos)
+
+    //Filter -> filtrar arreglo
+    //1) Devolver expresion true or false
+    //2) Nuevo arreglo filtrado
+    val respuestaFilter: List<Int> = arregloDinamico
+        .filter{valorActual:Int ->
+            val mayoresACinco: Boolean = valorActual > 5
+            return@filter mayoresACinco
+        }
+    val respuestaFilterDos = arregloDinamico.filter { it <= 5 }
+    println(respuestaFilter)
+    println(respuestaFilterDos)
+
+    //OR AND
+    //OR -> ANY  (Alguno cumplen?)
+    //AND -> ALL (Todos cumplen?)
+
+    val respuestaAny: Boolean = arregloDinamico
+        .any{valorActual: Int ->
+            return@any (valorActual > 5)
+        }
+    println(respustaAny) //true
+
+    val respuestaAll: Boolean = arregloDinamico
+        .all{valorActual: Int ->
+            return@all (valorActual > 5)
+        }
+    println(respuestaAll) //false
+
+    //REDUCE -> valor acumulado
+    //Valor acumulado = 0 ( En Kotlin es siempre 0)
+    //[1,2,3,4,5] -> se suman los valores del arreglo
+    //iteracion 1 = valorInicio +1 = 0 + 1 = 1
+    //iteración 2 = iteracion 1 +2 = 1 + 2 = 3
+
+    val respuestasReduce: Int = arregloDinamico
+        .reduce{// acumulado = 0 -> Siempre empieza en 0
+                acumulado: Int, valorActual: Int ->
+            return@reduce(acumulado + valorActual) // --> Logica de negocio
+        }
+    println(respuestasReduce) //78
 }
 
 //void imprimirNombre(String nombre){}
@@ -201,6 +242,7 @@ class Suma( //Constructor
         }
     }
 }
+
 
 
 main()
