@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hola_mundo">Hello Word</string>
-    <color name="color">#B00020</color>
+    <color name="color_ft">#6018A8</color>
+    <color name="color_bg">#FF5B66</color>
 </resources>
