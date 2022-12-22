@@ -1,6 +1,7 @@
 package com.example.nbhapplication
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -15,29 +16,10 @@ class ACicloVida : AppCompatActivity() {
     private lateinit var binding: ActivityAcicloVidaBinding
     var textoGlobal = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-     binding = ActivityAcicloVidaBinding.inflate(layoutInflater)
-     setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_aciclo_vida)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        mostrarSnackbar("OnCreate")
-    }
-
     override fun onSupportNavigateUp(): Boolean {
-    val navController = findNavController(R.id.nav_host_fragment_content_aciclo_vida)
-    return navController.navigateUp(appBarConfiguration)
-            || super.onSupportNavigateUp()
+        val navController = findNavController(R.id.nav_host_fragment_content_aciclo_vida)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
     }
 
     fun mostrarSnackbar(texto:String){
@@ -45,8 +27,23 @@ class ACicloVida : AppCompatActivity() {
         Snackbar.make(findViewById(R.id.cl_ciclo_vida),
             textoGlobal, Snackbar.LENGTH_LONG)
             .setAction("Action",null).show()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityAcicloVidaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        val navController = findNavController(R.id.nav_host_fragment_content_aciclo_vida)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
         mostrarSnackbar("OnCreate")
-    }//onCreate fin de bloque de código
+    }
 
     override fun onStart() {
         super.onStart()
@@ -76,5 +73,24 @@ class ACicloVida : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mostrarSnackbar("onDestroy")
+    }
+
+    //Funciones adicionales
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.run {
+            //Guardar variables
+            //Primitivas
+            putString("textoGuardado",textoGlobal)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val textoRecuperado:String? = savedInstanceState.getString("textoGuardado")
+        if(textoRecuperado != null){
+            mostrarSnackbar(textoRecuperado)
+            textoGlobal = textoRecuperado
+        }
     }
 }
