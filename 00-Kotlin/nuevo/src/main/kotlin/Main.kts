@@ -147,6 +147,7 @@ fun imprimirNombre(nombre:String): Unit {
     println("Nombre: ${nombre}")
 }
 
+
 fun calcularSueldo(
     sueldo:Double, //Requerido
     tasa:Double = 12.00, //Opcional (Defecto)
