@@ -11,4 +11,6 @@ abstract class DAOFactory {
 
     abstract fun getPeliculaDAO(): PeliculaDAO?
 
+    abstract fun getEstudioDAO(): EstudioDAO?
+
 }

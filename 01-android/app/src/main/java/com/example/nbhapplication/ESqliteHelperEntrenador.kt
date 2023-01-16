@@ -45,6 +45,6 @@ class ESqliteHelperEntrenador (
             )
         basedatosEscritura.close()
         return resultadoGuardar.toInt() != -1
-        
+
     }
 }

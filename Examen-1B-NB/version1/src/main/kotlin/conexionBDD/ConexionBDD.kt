@@ -30,7 +30,7 @@ class ConexionBDD {
         fun cerrar(rs: ResultSet?) {
             var rs = rs
             try {
-                rs!!.close()
+                rs?.close()
             } catch (e: SQLException) {
                 e.printStackTrace()
             }
@@ -40,7 +40,7 @@ class ConexionBDD {
         fun cerrar(pstm: PreparedStatement?) {
             var pstm = pstm
             try {
-                pstm!!.close()
+                pstm?.close()
             } catch (e: SQLException) {
                 e.printStackTrace()
             }

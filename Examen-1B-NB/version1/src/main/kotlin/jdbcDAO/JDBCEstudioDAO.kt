@@ -1,25 +1,25 @@
 package jdbcDAO
 
 import conexionBDD.ConexionBDD
-import dao.PeliculaDAO
+import dao.EstudioDAO
+import entidades.Estudio
 import entidades.Pelicula
 import java.sql.*
 
 
-class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
+class JDBCEstudioDAO: JDBCGenericDAO <Estudio, Int>(), EstudioDAO {
 
     //METODO CREATE
-    override fun create(pelicula: Pelicula) {
-        val sql = "INSERT INTO PELICULAS (id_estudio, nombre_pelicula, director, fecha_lanzamiento, puntuacion, clasificacion) VALUES (?,?,?,?,?,?)"
+    override fun create(estudio: Estudio) {
+        val sql = "INSERT INTO ESTUDIO_PELICULAS (nombre_estudio, fundador, fecha_fundacion, beneficio, activo) VALUES (?,?,?,?,?)"
         var pstm: PreparedStatement?
         try {
             pstm = ConexionBDD.getConexion()!!.prepareStatement(sql)
-            pstm?.setInt(1, pelicula.id_estudio)
-            pstm?.setString(2, pelicula.nombre)
-            pstm?.setString(3, pelicula.director)
-            pstm?.setDate(4, pelicula.fecha_lanzamiento as Date?)
-            pstm?.setFloat(5, pelicula.puntuacion)
-            pstm?.setString(6, pelicula.clasificacion.toString())
+            pstm?.setString(1, estudio.nombre_estudio)
+            pstm?.setString(2, estudio.fundador)
+            pstm?.setDate(3, estudio.fecha_fundacion as Date?)
+            pstm?.setFloat(4, estudio.beneficio)
+            pstm?.setBoolean(5, estudio.activo)
             val filas = pstm?.executeUpdate()
             println("Numero de filas afectadas: $filas")
         } catch (e: SQLException) {
@@ -29,7 +29,7 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
 
     //METODO DELETE
     override fun delete(id: Int?) {
-        val sql = "DELETE FROM PELICULAS WHERE id_pelicula = ?"
+        val sql = "DELETE FROM ESTUDIO_PELICULAS WHERE id_estudio = ?"
         var pstm: PreparedStatement? = null
         try {
             pstm = ConexionBDD.getConexion()!!.prepareStatement(sql)
@@ -44,19 +44,18 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
     }
 
     //METODO UPDATE
-    override fun update(p: Pelicula) {
-        val sql = "UPDATE PELICULAS SET id_estudio = ?, nombre_pelicula= ?, director= ?, fecha_lanzamiento= ?, puntuacion= ?, clasificacion=? WHERE id_pelicula = ?"
+    override fun update(estudio: Estudio) {
+        val sql = "UPDATE ESTUDIO_PELICULAS SET nombre_estudio= ?, fundador= ?, fecha_fundacion= ?, beneficio= ?, activo=? WHERE id_estudio = ?"
 
         var pstm: PreparedStatement? = null
         try {
             pstm = ConexionBDD.getConexion()!!.prepareStatement(sql)
-            pstm?.setInt(1, p.id_estudio)
-            pstm?.setString(2, p.nombre)
-            pstm?.setString(3, p.director)
-            pstm?.setDate(4, p.fecha_lanzamiento as Date?)
-            pstm?.setFloat(5, p.puntuacion)
-            pstm?.setString(6, p.clasificacion.toString())
-            p.id_pelicula?.let { pstm?.setInt(7, it) }
+            pstm?.setString(1, estudio.nombre_estudio)
+            pstm?.setString(2, estudio.fundador)
+            pstm?.setDate(3, estudio.fecha_fundacion as Date?)
+            pstm?.setFloat(4, estudio.beneficio)
+            pstm?.setBoolean(5, estudio.activo)
+            estudio.id_estudio?.let { pstm?.setInt(6, it) }
             val filas = pstm?.executeUpdate()
             println("Numero de filas ejecutadas: $filas")
         } catch (e: SQLException) {
@@ -67,18 +66,18 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
     }
 
     //METODO READ O VER LISTA
-    override fun getAll(): MutableList<Pelicula> {
+    override fun getAll(): MutableList<Estudio> {
         var cnn: Connection? = null
         var rs: ResultSet? = null
-        val peliculas: MutableList<Pelicula> = ArrayList<Pelicula>()
+        val estudios: MutableList<Estudio> = ArrayList<Estudio>()
         // 2.- Conectar a la BDD
         cnn = ConexionBDD.getConexion()
         try {
-            rs = cnn?.prepareStatement("SELECT * FROM PELICULAS")?.executeQuery()
+            rs = cnn?.prepareStatement("SELECT * FROM ESTUDIO_PELICULAS")?.executeQuery()
             while (rs?.next() == true) {
-                val p = Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3),
-                    rs.getString(4),rs.getDate(5),rs.getFloat(6),rs.getString(7).first())
-                peliculas.add(p)
+                val e = Estudio(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getDate(4),rs.getFloat(5),rs.getBoolean(6))
+                estudios.add(e)
             }
         } catch (e: SQLException) {
             e.printStackTrace()
@@ -86,6 +85,6 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
             // 3.- Cerrar
             ConexionBDD.cerrar(rs)
         }
-        return peliculas
+        return estudios
     }
 }
