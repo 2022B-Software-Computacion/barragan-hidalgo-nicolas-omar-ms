@@ -86,7 +86,7 @@ class ESqliteHelperEntrenador (
 
     }
 
-    fun consultarEntrenador(id:Int):BEntrenador{
+    fun consultarEntrenadorPorId(id:Int):BEntrenador{
         val baseDatosLectura = readableDatabase
         val scriptConsultarUsuario = "SELECT * FROM ENTRENADOR WHERE ID = ?"
         val resultadoConsultaLectura = baseDatosLectura.rawQuery(
