@@ -3,7 +3,6 @@ package jdbcDAO
 import conexionBDD.ConexionBDD
 import dao.EstudioDAO
 import entidades.Estudio
-import entidades.Pelicula
 import java.sql.*
 
 
@@ -65,6 +64,36 @@ class JDBCEstudioDAO: JDBCGenericDAO <Estudio, Int>(), EstudioDAO {
         }
     }
 
+    //METODO READ O BUSCAR POR ID
+    override fun getById(id: Int?): Estudio {
+        val sql = "SELECT * FROM  ESTUDIO WHERE id_estudio = ?"
+        var rs: ResultSet? = null
+        var pstm: PreparedStatement? = null
+        var estudio: Estudio? = null
+        try {
+            pstm = ConexionBDD.getConexion()!!.prepareStatement(sql)
+            pstm.setInt(1, id!!)
+            rs = pstm.executeQuery()
+            while (rs.next()) {
+                estudio = Estudio(
+                    rs.getInt("id_estudio"),
+                    rs.getString("nombre_estudio"),
+                    rs.getString("fundador"),
+                    rs.getDate("fecha_fundacion"),
+                    rs.getFloat("benficio"),
+                    rs.getBoolean("activo")
+                )
+            }
+
+        } catch (e: SQLException) {
+            e.printStackTrace()
+        } finally {
+            ConexionBDD.cerrar(rs)
+            ConexionBDD.cerrar(pstm)
+        }
+        return estudio!!
+    }
+
     //METODO READ O VER LISTA
     override fun getAll(): MutableList<Estudio> {
         var cnn: Connection? = null
@@ -75,8 +104,13 @@ class JDBCEstudioDAO: JDBCGenericDAO <Estudio, Int>(), EstudioDAO {
         try {
             rs = cnn?.prepareStatement("SELECT * FROM ESTUDIO_PELICULAS")?.executeQuery()
             while (rs?.next() == true) {
-                val e = Estudio(rs.getInt(1), rs.getString(2), rs.getString(3),
-                    rs.getDate(4),rs.getFloat(5),rs.getBoolean(6))
+                val e = Estudio(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getDate(4),
+                    rs.getFloat(5),
+                    rs.getBoolean(6))
                 estudios.add(e)
             }
         } catch (e: SQLException) {

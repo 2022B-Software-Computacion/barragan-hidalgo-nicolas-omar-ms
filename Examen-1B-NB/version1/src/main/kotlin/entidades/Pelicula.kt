@@ -14,6 +14,6 @@ class Pelicula(
 ) {
 
     override fun toString(): String {
-        return "| id_pelicula=$id_pelicula | id_estudio=$id_estudio | nombre='$nombre'| director='$director'| fecha_lanzamiento=$fecha_lanzamiento | puntuacion=$puntuacion | clasificacion='$clasificacion' |\n"
+        return "| $id_pelicula | $id_estudio | $nombre | $director| $fecha_lanzamiento | $puntuacion | $clasificacion |\n"
     }
 }

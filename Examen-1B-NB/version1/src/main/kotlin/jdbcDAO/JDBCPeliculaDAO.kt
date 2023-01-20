@@ -2,6 +2,7 @@ package jdbcDAO
 
 import conexionBDD.ConexionBDD
 import dao.PeliculaDAO
+import entidades.Estudio
 import entidades.Pelicula
 import java.sql.*
 
@@ -66,6 +67,37 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
         }
     }
 
+    //METODO READ O BUSCAR POR ID
+    override fun getById(id: Int?): Pelicula {
+        val sql = "SELECT * FROM  PELICULAS WHERE id_pelicula = ?"
+        var rs: ResultSet? = null
+        var pstm: PreparedStatement? = null
+        var pelicula: Pelicula? = null
+        try {
+            pstm = ConexionBDD.getConexion()!!.prepareStatement(sql)
+            pstm.setInt(1, id!!)
+            rs = pstm.executeQuery()
+            while (rs.next()) {
+                pelicula = Pelicula(
+                    rs.getInt("id_pelicula"),
+                    rs.getInt("id_estudio"),
+                    rs.getString("nombre_pelicula"),
+                    rs.getString("director"),
+                    rs.getDate("fecha_lanzamiento"),
+                    rs.getFloat("puntuacion"),
+                    rs.getString("clasificacion").first()
+                )
+            }
+
+        } catch (e: SQLException) {
+            e.printStackTrace()
+        } finally {
+            ConexionBDD.cerrar(rs)
+            ConexionBDD.cerrar(pstm)
+        }
+        return pelicula!!
+    }
+
     //METODO READ O VER LISTA
     override fun getAll(): MutableList<Pelicula> {
         var cnn: Connection? = null
@@ -76,8 +108,15 @@ class JDBCPeliculaDAO: JDBCGenericDAO <Pelicula, Int>(),PeliculaDAO{
         try {
             rs = cnn?.prepareStatement("SELECT * FROM PELICULAS")?.executeQuery()
             while (rs?.next() == true) {
-                val p = Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3),
-                    rs.getString(4),rs.getDate(5),rs.getFloat(6),rs.getString(7).first())
+                val p = Pelicula(
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getDate(5),
+                    rs.getFloat(6),
+                    rs.getString(7).first()
+                )
                 peliculas.add(p)
             }
         } catch (e: SQLException) {

@@ -59,11 +59,11 @@ fun mostrarMenuPelicula() {
     var salir = false
     var opcion: Int
     do {
-        println("PELÍCULAS")
+        println("\nPELÍCULAS")
         println("1. Crear película")
         println("2. Eliminar película")
         println("3. Actualizar película")
-        println("4. Burcar película")
+        println("4. Buscar película")
         println("5. Ver lista de peliculas")
         println("6. Guardar lista de peliculas")
         println("7. Regresar")
@@ -146,15 +146,20 @@ fun mostrarMenuPelicula() {
             }
             4 -> {
                 println("BUSCAR PELICULA")
-                print("Ingrese el id de la pelicula:")
-                var id_pelicula = sn.nextInt()
-                //TODO
+                try {
+                    print("Ingrese el id de la pelicula:")
+                    var id_pelicula = sn.nextInt()
+                    var pelicula_buscada = DAOFactory.getFactory()?.getPeliculaDAO()?.getById(id_pelicula)
+                    println(pelicula_buscada)
+                } catch (e: Exception) {
+                    println(e)
+                }
             }
             5 -> {
                 try {
                     println("LISTA DE PELICULAS")
-                    var lista_peliculas = DAOFactory.getFactory()?.getPeliculaDAO()?.getAll()
-                    print(lista_peliculas)
+                    var listaPeliculas = DAOFactory.getFactory()?.getPeliculaDAO()?.getAll()
+                    print(listaPeliculas.toString().substring(1,listaPeliculas.toString().length-1).replace(",",""))
                 } catch (e: Exception) {
                     println()
                 }
@@ -190,7 +195,7 @@ fun mostrarMenuEstudio() {
         println("1. Crear estudio")
         println("2. Eliminar estudio")
         println("3. Actualizar estudio")
-        println("4. Burcar estudio")
+        println("4. Buscar estudio")
         println("5. Ver lista de estudios")
         println("6. Guardar lista de estudios")
         println("7. Regresar")
@@ -267,12 +272,13 @@ fun mostrarMenuEstudio() {
                 println("BUSCAR ESTUDIO")
                 print("Ingrese el id del estudio a buscar:")
                 var id_estudio = sn.nextInt()
+                val estudio_buscado = DAOFactory.getFactory()?.getEstudioDAO()?.getById(id_estudio)
             }
             5 -> {
                 try {
                     println("LISTA DE ESTUDIOS")
                     var listaEstudios = DAOFactory.getFactory()?.getEstudioDAO()?.getAll()
-                    println(listaEstudios)
+                    println(listaEstudios.toString().substring(1,listaEstudios.toString().length-1))
                 } catch (e: Exception) {
                     println(e)
                 }
@@ -293,6 +299,15 @@ fun mostrarMenuEstudio() {
             else -> println("Solo números entre 1 y 7")
         }
     } while (!salir)
+}
+
+//FUNCIONES PARA MOSTRAR
+fun mostrarTablaPeliculas(){
+
+}
+
+fun mostrarTablaEstudios(){
+
 }
 
 //FUNCION PARA CONVERTIR STRING A DATE TIPO SQL
