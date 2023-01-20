@@ -1,3 +1,6 @@
+import archivos.Archivo
+import archivos.Archivo.Companion.writeCsvEstudios
+import archivos.Archivo.Companion.writeCsvPeliculas
 import dao.DAOFactory
 import entidades.Estudio
 import entidades.Pelicula
@@ -152,7 +155,7 @@ fun mostrarMenuPelicula() {
                     var pelicula_buscada = DAOFactory.getFactory()?.getPeliculaDAO()?.getById(id_pelicula)
                     println(pelicula_buscada)
                 } catch (e: Exception) {
-                    println(e)
+                    e.printStackTrace()
                 }
             }
             5 -> {
@@ -212,7 +215,7 @@ fun mostrarMenuEstudio() {
                     var fundador = readLine()
                     print("Fecha de fundacion(aaaa-mm-dd):")
                     var fecha_lanz = readLine()
-                    print("Benefifico(Mill):")
+                    print("Benefifico(Millones):")
                     val puntuacion = sn.nextFloat()
                     print("Actividad:")
                     val activo = sn.nextBoolean()
@@ -273,12 +276,13 @@ fun mostrarMenuEstudio() {
                 print("Ingrese el id del estudio a buscar:")
                 var id_estudio = sn.nextInt()
                 val estudio_buscado = DAOFactory.getFactory()?.getEstudioDAO()?.getById(id_estudio)
+                println(estudio_buscado)
             }
             5 -> {
                 try {
                     println("LISTA DE ESTUDIOS")
                     var listaEstudios = DAOFactory.getFactory()?.getEstudioDAO()?.getAll()
-                    println(listaEstudios.toString().substring(1,listaEstudios.toString().length-1))
+                    println(listaEstudios.toString().substring(1,listaEstudios.toString().length-1).replace(",",""))
                 } catch (e: Exception) {
                     println(e)
                 }
@@ -319,27 +323,7 @@ fun formatearFecha(fecha: String?): java.sql.Date {
     return sqlDate
 }
 
-//FUNCIONES PARA ESCRIBIR ARCHIVOS DE CADA ENTIDAD
-fun OutputStream.writeCsvPeliculas(peliculas: List<Pelicula>) {
-    val writer = bufferedWriter()
-    writer.write(""""ID_PELICULA", "ID_ESTUDIO", "NOMBRE","DIRECTOR","FECHA_LANZAMIENTO","PUNTUACION","CLASIFICACION"""")
-    writer.newLine()
-    peliculas.forEach {
-        writer.write("${it.id_pelicula}, ${it.id_estudio}, ${it.nombre}, ${it.director}, ${it.fecha_lanzamiento}, ${it.puntuacion},${it.clasificacion}")
-        writer.newLine()
-    }
-    writer.flush()
-}
 
-fun OutputStream.writeCsvEstudios(estudios: List<Estudio>) {
-    val writer = bufferedWriter()
-    writer.write(""""ID_ESTUDIO", "NOMBRE_ESTUDIO","FUNDADOR","FECHA_FUNDACION","BENEFICIO","ACTIVO"""")
-    writer.newLine()
-    estudios.forEach {
-        writer.write("${it.id_estudio}, ${it.nombre_estudio}, ${it.fundador}, ${it.fecha_fundacion}, ${it.beneficio},${it.activo}")
-        writer.newLine()
-    }
-    writer.flush()
-}
+
 
 

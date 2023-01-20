@@ -13,6 +13,6 @@ class Estudio(
     var activo: Boolean
 ) {
     override fun toString(): String {
-        return "| id_estudio=$id_estudio | nombre_estudio='$nombre_estudio' | fundador='$fundador' | fecha_fundacion=$fecha_fundacion | beneficio=$beneficio | activo=$activo |"
+        return "| $id_estudio | $nombre_estudio | $fundador | $fecha_fundacion | $beneficio | $activo |\n"
     }
 }

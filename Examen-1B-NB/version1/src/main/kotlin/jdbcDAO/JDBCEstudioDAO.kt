@@ -66,7 +66,7 @@ class JDBCEstudioDAO: JDBCGenericDAO <Estudio, Int>(), EstudioDAO {
 
     //METODO READ O BUSCAR POR ID
     override fun getById(id: Int?): Estudio {
-        val sql = "SELECT * FROM  ESTUDIO WHERE id_estudio = ?"
+        val sql = "SELECT * FROM  ESTUDIO_PELICULAS WHERE id_estudio = ?"
         var rs: ResultSet? = null
         var pstm: PreparedStatement? = null
         var estudio: Estudio? = null
@@ -80,7 +80,7 @@ class JDBCEstudioDAO: JDBCGenericDAO <Estudio, Int>(), EstudioDAO {
                     rs.getString("nombre_estudio"),
                     rs.getString("fundador"),
                     rs.getDate("fecha_fundacion"),
-                    rs.getFloat("benficio"),
+                    rs.getFloat("beneficio"),
                     rs.getBoolean("activo")
                 )
             }

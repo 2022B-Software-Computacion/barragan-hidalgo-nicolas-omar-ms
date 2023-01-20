@@ -19,7 +19,7 @@ class ConexionBDD {
                     val user = "postgres"
                     val pass = "admin"
                     instancia = DriverManager.getConnection(url, user, pass)
-                    println("Transacción Existosa!")
+                    println("Conexión Existosa!")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
