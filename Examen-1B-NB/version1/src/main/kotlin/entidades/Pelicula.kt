@@ -12,8 +12,18 @@ class Pelicula(
     var puntuacion: Float,
     var clasificacion: Char,
 ) {
+    val strPelicula = String.format(
+        "%10d %19d %20s %20s %19s %19f %16c\n",
+        id_pelicula,
+        id_estudio,
+        nombre,
+        director,
+        fecha_lanzamiento,
+        puntuacion,
+        clasificacion
+    )
 
     override fun toString(): String {
-        return "| $id_pelicula | $id_estudio | $nombre | $director| $fecha_lanzamiento | $puntuacion | $clasificacion |\n"
+        return strPelicula
     }
 }

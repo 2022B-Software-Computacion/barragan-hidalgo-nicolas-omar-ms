@@ -12,7 +12,16 @@ class Estudio(
     var beneficio: Float,
     var activo: Boolean
 ) {
+    val strEstudio = String.format(
+        "%10d %20s %19s %19s %19f %16b\n",
+        id_estudio,
+        nombre_estudio,
+        fundador,
+        fecha_fundacion,
+        beneficio,
+        activo
+    )
     override fun toString(): String {
-        return "| $id_estudio | $nombre_estudio | $fundador | $fecha_fundacion | $beneficio | $activo |\n"
+        return strEstudio
     }
 }

@@ -9,7 +9,6 @@ class ConexionBDD {
         private var conexionClass: ConexionBDD? = null
         private var instancia: Connection? = null
 
-
         fun getConexion(): Connection? {
             try {
                 if (instancia == null) {
@@ -19,7 +18,7 @@ class ConexionBDD {
                     val user = "postgres"
                     val pass = "admin"
                     instancia = DriverManager.getConnection(url, user, pass)
-                    println("Conexión Existosa!")
+                    println("Conexión Existosa!\n")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
