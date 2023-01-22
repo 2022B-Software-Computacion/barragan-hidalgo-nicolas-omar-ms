@@ -1,0 +1,69 @@
+/*==============================================================*/
+/* DBMS name:      PostgreSQL 8                                 */
+/* Created on:     08/01/2023 05:26:23 p. m.                    */
+/*==============================================================*/
+
+
+drop index ESTUDIO_PELICULAS_PK;
+
+drop table ESTUDIO_PELICULAS;
+
+drop index RELATIONSHIP_1_FK;
+
+drop index PELICULAS_PK;
+
+drop table PELICULAS;
+
+/*==============================================================*/
+/* Table: ESTUDIO_PELICULAS                                     */
+/*==============================================================*/
+create table ESTUDIO_PELICULAS (
+   ID_ESTUDIO           SERIAL               not null,
+   NOMBRE_ESTUDIO       VARCHAR(30)          not null,
+   FUNDADOR             VARCHAR(30)          not null,
+   FECHA_FUNDACION      DATE                 not null,
+   BENEFICIO            FLOAT8               not null,
+   ACTIVO               BOOLEAN              not null,
+   constraint PK_ESTUDIO_PELICULAS primary key (ID_ESTUDIO)
+);
+
+/*==============================================================*/
+/* Index: ESTUDIO_PELICULAS_PK                                  */
+/*==============================================================*/
+create unique index ESTUDIO_PELICULAS_PK on ESTUDIO_PELICULAS (
+ID_ESTUDIO
+);
+
+/*==============================================================*/
+/* Table: PELICULAS                                             */
+/*==============================================================*/
+create table PELICULAS (
+   ID_PELICULA          SERIAL                 not null,
+   ID_ESTUDIO           INT4                 not null,
+   NOMBRE_PELICULA      VARCHAR(30)          not null,
+   DIRECTOR             VARCHAR(30)          not null,
+   FECHA_LANZAMIENTO    DATE                 not null,
+   PUNTUACION           FLOAT8               not null,
+   CLASIFICACION        CHAR(5)              null,
+   constraint PK_PELICULAS primary key (ID_PELICULA)
+);
+
+/*==============================================================*/
+/* Index: PELICULAS_PK                                          */
+/*==============================================================*/
+create unique index PELICULAS_PK on PELICULAS (
+ID_PELICULA
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_1_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_1_FK on PELICULAS (
+ID_ESTUDIO
+);
+
+alter table PELICULAS
+   add constraint FK_PELICULA_RELATIONS_ESTUDIO_ foreign key (ID_ESTUDIO)
+      references ESTUDIO_PELICULAS (ID_ESTUDIO)
+      on delete restrict on update restrict;
+
