@@ -102,6 +102,7 @@ object Menu {
                         )
 
                         DAOFactory.getFactory()?.getPeliculaDAO()?.create(nuevaPelicula)
+
                     } catch (e: Exception) {
                         println(e)
                     }
