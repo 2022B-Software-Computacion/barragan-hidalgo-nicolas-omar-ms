@@ -155,6 +155,7 @@ object Menu {
                         var id_pelicula = sn.nextInt()
                         var pelicula_buscada = DAOFactory.getFactory()?.getPeliculaDAO()?.getById(id_pelicula)
                         if(pelicula_buscada != null){
+                            print("")
                             print(headerPelicula)
                             println(pelicula_buscada)
                         }else{
@@ -171,6 +172,7 @@ object Menu {
                         var listaPeliculas = DAOFactory.getFactory()?.getPeliculaDAO()?.getAll()
                         //print(listaPeliculas.toString().substring(1,listaPeliculas.toString().length-1).replace(",",""))
                         if (listaPeliculas != null) {
+                            print("")
                             print(headerPelicula)
                             for (item in listaPeliculas){
                                 print(item)
@@ -274,7 +276,7 @@ object Menu {
                     var activo = sn.nextBoolean()
 
                     var nuevoEstudio = Estudio(
-                        null,
+                        id_estudio,
                         nombre,
                         fundador,
                         formatearFecha(fecha_lanz),
@@ -290,6 +292,7 @@ object Menu {
                     var id_estudio = sn.nextInt()
                     val estudio_buscado = DAOFactory.getFactory()?.getEstudioDAO()?.getById(id_estudio)
                     if (estudio_buscado != null){
+                        print("")
                         print(headerEstudio)
                         println(estudio_buscado)
                     }else{
@@ -301,6 +304,7 @@ object Menu {
                         println("LISTA DE ESTUDIOS")
                         var listaEstudios = DAOFactory.getFactory()?.getEstudioDAO()?.getAll()
                         if (listaEstudios != null) {
+                            print("")
                             print(headerEstudio)
                             for (item in listaEstudios){
                                 print(item)
