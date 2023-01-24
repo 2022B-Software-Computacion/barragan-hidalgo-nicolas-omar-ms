@@ -1,0 +1,8 @@
+PROYECTO APLICACIONES MOVILES
+
+INTEGRANTES: Nicolás Barragán, Giancarlo Naranjo
+TEMA: Aplicativo para buscar recetas de cocina
+
+ENLACE HISTORIAS DE USUARIO(TRELLO): https://trello.com/invite/b/Eerzm8Gd/ATTI0a3240d5692cacb451c3914b950ac9c1B7D07305/agile-board-moviles
+
+ENLACE MOCKUPS(FIGMA):https://www.figma.com/file/dtA7bvFHB2xp5nUslGXlZ5/Proyecto---1B---Moviles?node-id=0%3A1&t=TjDib3Z4DUONZ9bE-1
