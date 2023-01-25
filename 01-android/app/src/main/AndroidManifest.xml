@@ -26,12 +26,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <!--android:exported =true Para que sea visible!-->
         <activity
             android:name=".CIntentExplicitoParametros"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".BListView"
