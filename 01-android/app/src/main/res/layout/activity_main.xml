@@ -14,7 +14,7 @@
         android:text="@string/hola_mundo"
         android:textColor="@color/color_ft"
         tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="117dp" />
+        tools:layout_editor_absoluteY="44dp" />
 
     <Button
         android:id="@+id/btn_ciclo_vida"
@@ -62,7 +62,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SQLite"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="184dp" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R. View"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sqlite"
+        app:layout_constraintStart_toStartOf="@+id/btn_sqlite"
+        tools:layout_editor_absoluteY="105dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

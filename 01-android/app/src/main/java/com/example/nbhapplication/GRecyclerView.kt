@@ -39,5 +39,6 @@ class GRecyclerView : AppCompatActivity() {
     fun aumentarTotalLikes(){
         totalLikes = totalLikes +1
         val totalLikesTextView = findViewById<TextView>(R.id.tv_total_likes)
+        totalLikesTextView.text = totalLikes.toString()
     }
 }
