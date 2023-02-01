@@ -74,4 +74,13 @@
         app:layout_constraintStart_toStartOf="@+id/btn_sqlite"
         tools:layout_editor_absoluteY="105dp" />
 
+    <Button
+        android:id="@+id/btn_google_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maps"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_list_view"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_list_view"
+        tools:layout_editor_absoluteY="611dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +15,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nbhapplication"
         tools:targetApi="31">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+
+             API_KEY = AIzaSyCZnHvMtkadW64vde1xUHNfG2xWw6awITs
+             AIzaSyCtDdP-gBFFhd_DdjTrmO0rN_Qt0_2rIc8
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCZnHvMtkadW64vde1xUHNfG2xWw6awITs" />
+
+        <activity
+            android:name=".HGoogleMaps"
+            android:exported="false"
+            android:label="@string/title_activity_hgoogle_maps" />
         <activity
             android:name=".GRecyclerView"
             android:exported="false">
@@ -25,15 +51,16 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
-        <!--android:exported =true Para que sea visible!-->
+        </activity> <!-- android:exported =true Para que sea visible! -->
         <activity
             android:name=".CIntentExplicitoParametros"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/plain"/>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
