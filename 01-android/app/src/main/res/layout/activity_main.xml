@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CICLO VIDA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_intent"
+        app:layout_constraintStart_toStartOf="@+id/btn_intent"
         tools:layout_editor_absoluteY="435dp" />
 
     <Button
@@ -51,9 +51,9 @@
         android:layout_height="wrap_content"
         android:text="I Explicito"
         app:layout_constraintBottom_toTopOf="@+id/btn_ciclo_vida"
-        app:layout_constraintEnd_toEndOf="@+id/btn_ciclo_vida"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/btn_ciclo_vida"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito"
         app:layout_constraintTop_toBottomOf="@+id/btn_ir_intent_implicito"
         app:layout_constraintVertical_bias="0.525" />
 
@@ -62,8 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SQLite"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="185dp" />
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="188dp" />
 
     <Button
         android:id="@+id/btn_recycler_view"
@@ -71,8 +71,9 @@
         android:layout_height="wrap_content"
         android:text="R. View"
         app:layout_constraintEnd_toEndOf="@+id/btn_sqlite"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btn_sqlite"
-        tools:layout_editor_absoluteY="105dp" />
+        tools:layout_editor_absoluteY="107dp" />
 
     <Button
         android:id="@+id/btn_google_maps"
@@ -82,5 +83,13 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_ir_list_view"
         app:layout_constraintStart_toStartOf="@+id/btn_ir_list_view"
         tools:layout_editor_absoluteY="611dp" />
+
+    <Button
+        android:id="@+id/btn_intent_firebase_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UI"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="107dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
