@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "711698672699",
+    "project_id": "b-s-nbh",
+    "storage_bucket": "b-s-nbh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711698672699:android:3076a3ae5848589333c01e",
+        "android_client_info": {
+          "package_name": "com.example.nbhapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711698672699-9hh7rc7kr3p4o9k15mpifo5kglrbdm2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyML9txOf02yDCQlZ7wtiE7zLrTPvDTvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711698672699-9hh7rc7kr3p4o9k15mpifo5kglrbdm2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711698672699:android:b44140e3aa0c9cf633c01e",
+        "android_client_info": {
+          "package_name": "com.example.recyclerbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711698672699-9hh7rc7kr3p4o9k15mpifo5kglrbdm2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyML9txOf02yDCQlZ7wtiE7zLrTPvDTvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711698672699-9hh7rc7kr3p4o9k15mpifo5kglrbdm2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

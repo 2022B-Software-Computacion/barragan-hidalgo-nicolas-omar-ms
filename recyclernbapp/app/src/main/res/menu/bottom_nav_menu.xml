@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_hbo"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_movies"
+        android:icon="@drawable/ic_clapper_hbo"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_series"
+        android:icon="@drawable/ic_series_hbo"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_download"
+        android:icon="@drawable/ic_download_hbo"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_search_hbo"
+        android:title="" />
+
+
+</menu>
