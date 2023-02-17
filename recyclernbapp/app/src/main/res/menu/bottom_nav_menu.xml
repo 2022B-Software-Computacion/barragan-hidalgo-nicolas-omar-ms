@@ -7,7 +7,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/navigation_movies"
+        android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_clapper_hbo"
         android:title="" />
 
