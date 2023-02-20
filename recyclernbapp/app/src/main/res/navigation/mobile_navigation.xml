@@ -22,4 +22,14 @@
         android:name="com.example.recycler_nb_app.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_movie"
+        android:name="com.example.recycler_nb_app.ui.movies.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/navigation_series"
+        android:name="com.example.recycler_nb_app.ui.series.SeriesFragment"
+        android:label="fragment_series"
+        tools:layout="@layout/fragment_series" />
 </navigation>
