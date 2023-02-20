@@ -69,22 +69,13 @@ class MovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.catalogMovies)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        viewModel.getMoviesCatalog()
-        recyclerView.adapter = MoviesCatalogListAdapter()
-        */
-
-        //subscribeObservers()
+  
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
 
-        
+
     }
     private fun subscribeObservers() {
         viewModel.catalogList.observe(viewLifecycleOwner) {
