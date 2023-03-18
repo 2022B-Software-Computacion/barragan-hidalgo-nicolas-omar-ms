@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examen_2b_nb.R
+import com.example.examen_2b_nb.adapters.RecyclerMovieAdapter
 import com.example.examen_2b_nb.model.Movie
-import com.example.examen_2b_nb.model.Studio
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -33,7 +33,7 @@ class MoviesActivity : AppCompatActivity() {
         val moviesBy = findViewById<TextView>(R.id.txt_movies_by)
 
         //Just to check the document id
-        Toast.makeText(this, documentId.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, documentId.toString(), Toast.LENGTH_SHORT).show()
 
         //Set the name of the studio for the related movies
         val docRef = db.collection("studios").document(documentId.toString())
@@ -87,36 +87,13 @@ class MoviesActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-    }
-    /*
-    private fun eventChangeListener(){
-        if (documentId != null) {
-            db.collection("studios")
-                .document(documentId)
-                .collection("movies")
-                .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                    override fun onEvent(
-                        value: QuerySnapshot?,
-                        error: FirebaseFirestoreException?
-                    ) {
-                        if(error != null){
-                            Log.e("Firestore error",error.message.toString())
-                            return
-                        }
-                        //Loop al the documents inside the collection
-                        for(dc: DocumentChange in value?.documentChanges!!){
-                            if(dc.type == DocumentChange.Type.ADDED){
-                                movieArrayList.add(dc.document.toObject(Movie::class.java))
-                            }
-                        }
-                        recyclerMovieAdapter.notifyDataSetChanged()
-                    }
-                })
-        }
+        val btnBackToStudios = findViewById<ImageButton>(R.id.btn_back_to_studios)
+        btnBackToStudios
+            .setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
 
     }
-
-     */
-
 
 }

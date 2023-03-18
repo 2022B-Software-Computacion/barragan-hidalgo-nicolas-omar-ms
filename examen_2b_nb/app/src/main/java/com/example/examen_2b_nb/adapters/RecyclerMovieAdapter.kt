@@ -1,4 +1,4 @@
-package com.example.examen_2b_nb.activities
+package com.example.examen_2b_nb.adapters
 
 import android.content.ContentValues
 import android.content.Context
@@ -12,9 +12,9 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examen_2b_nb.R
+import com.example.examen_2b_nb.activities.EditMovieActivity
 import com.example.examen_2b_nb.firestore.FirestoreService
 import com.example.examen_2b_nb.model.Movie
-import com.example.examen_2b_nb.model.Studio
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
@@ -22,23 +22,18 @@ class RecyclerMovieAdapter(
     private var movieList: ArrayList<Movie>,
     private val studioId: String
 ) : RecyclerView.Adapter<RecyclerMovieAdapter.MyViewHolder>(){
-    private lateinit var context: Context
-    private lateinit var firestoreService: FirestoreService
-    private lateinit var listenerRegistration: ListenerRegistration
-    private lateinit var recyclerStudioAdapter: RecyclerStudioAdapter
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RecyclerMovieAdapter.MyViewHolder {
+    ): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.recycler_list_movies, parent, false
         )
-        //recyclerStudioAdapter = RecyclerStudioAdapter(studioList)
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerMovieAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val movie = movieList[position]
         holder.movieTextView.text = movie.movie_name
         holder.bind(movie)
@@ -48,21 +43,14 @@ class RecyclerMovieAdapter(
         return movieList.size
     }
 
-    interface OnPopupMenuClickListener {
-        fun onEditClick(documentId: String)
-        fun onDeleteClick(documentId: String)
-    }
-    /*
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newStudios: ArrayList<Studio>) {
-        studioList = newStudios
+    fun updateData(newMovies: ArrayList<Movie>) {
+        movieList = newMovies
         notifyDataSetChanged()
-    }*/
+    }
 
     inner class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val movieTextView = itemView.findViewById<TextView>(R.id.txt_movie_name)
-        //val studioOptions =  itemView.findViewById<ImageButton>(R.id.btn_studio_options)
         private var currentDocumentId: String? = null
 
         fun bind(movie: Movie) {

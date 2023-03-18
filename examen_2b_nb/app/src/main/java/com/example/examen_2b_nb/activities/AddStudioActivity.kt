@@ -7,12 +7,12 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import com.example.examen_2b_nb.R
+import com.example.examen_2b_nb.adapters.RecyclerStudioAdapter
 import com.example.examen_2b_nb.firestore.FirestoreService
 import com.example.examen_2b_nb.model.Studio
 import com.google.firebase.firestore.FirebaseFirestore
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
-import java.util.*
 
 class AddStudioActivity : AppCompatActivity() {
     val db = FirebaseFirestore.getInstance()
@@ -54,12 +54,18 @@ class AddStudioActivity : AppCompatActivity() {
                     active = studioActive
                 )
 
-                firestoreService.addStudio(studio)
+                firestoreService.addStudio(studio){ success->
+                    if (success) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        // Update the adapter with the new data
+                        //recyclerStudioAdapter.notifyDataSetChanged()
+                    }
+                }
                 //recyclerStudioAdapter.notifyDataSetChanged()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
             }
 
+        //Return from the create activity
         val btnReturnCreate= findViewById<Button>(R.id.btn_return_create_st)
         btnReturnCreate
             .setOnClickListener {

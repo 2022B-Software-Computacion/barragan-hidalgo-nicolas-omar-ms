@@ -54,7 +54,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="48dp"
         android:ems="10"
-        android:hint="Foundation date"
+        android:hint="Foundation date (YYYY-MM-dd)"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/input_edit_st_revenue"
         app:layout_constraintEnd_toEndOf="@+id/input_edit_st_founder"

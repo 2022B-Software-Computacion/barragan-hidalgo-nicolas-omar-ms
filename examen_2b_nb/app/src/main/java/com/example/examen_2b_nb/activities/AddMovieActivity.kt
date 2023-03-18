@@ -18,7 +18,6 @@ class AddMovieActivity : AppCompatActivity() {
     val db = FirebaseFirestore.getInstance()
     val firestoreService = FirestoreService()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_movie)
@@ -47,18 +46,21 @@ class AddMovieActivity : AppCompatActivity() {
                     score = movieScore
                 )
 
-                if (documentId != null) {
-                    firestoreService.addMovie(documentId,movie)
+                firestoreService.addMovie(documentId!!,movie){ success->
+                    if (success) {
+                        val intent = Intent(this, MoviesActivity::class.java)
+                        intent.putExtra("documentId",documentId)
+                        startActivity(intent)
+                    }
                 }
-                val intent = Intent(this, MoviesActivity::class.java)
-                intent.putExtra("documentId",documentId)
-                startActivity(intent)
+
             }
 
         val btnReturnCreate= findViewById<Button>(R.id.btn_return_create_mv)
         btnReturnCreate
             .setOnClickListener {
                 val intent = Intent(this, MoviesActivity::class.java)
+                intent.putExtra("documentId",documentId)
                 startActivity(intent)
             }
     }

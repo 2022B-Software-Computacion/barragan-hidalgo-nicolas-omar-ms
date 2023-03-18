@@ -55,7 +55,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="32dp"
         android:ems="10"
-        android:hint="Foundation date (yyyy/MM/dd)"
+        android:hint="Foundation date (YYYY-MM-dd)"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/input_st_revenue"
         app:layout_constraintEnd_toEndOf="@+id/input_st_founder"
@@ -96,20 +96,20 @@
         android:text="Return"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toEndOf="@+id/btn_create_studio_fs"
         app:layout_constraintTop_toBottomOf="@+id/input_st_active"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintVertical_bias="0.133" />
 
     <CheckBox
         android:id="@+id/input_st_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="196dp"
         android:text="Active"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/input_st_revenue"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="@+id/input_st_revenue" />
 
 

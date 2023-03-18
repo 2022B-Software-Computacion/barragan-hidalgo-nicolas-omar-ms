@@ -10,12 +10,12 @@
         android:id="@+id/id_recycler_studios"
         android:layout_width="395dp"
         android:layout_height="588dp"
-        tools:listitem="@layout/recylcler_list_studios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create_studio"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_movies_by"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/recylcler_list_studios" />
 
     <TextView
         android:id="@+id/txt_movies_by"

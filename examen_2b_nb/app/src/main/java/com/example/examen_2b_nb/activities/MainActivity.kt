@@ -1,15 +1,14 @@
 package com.example.examen_2b_nb.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examen_2b_nb.R
+import com.example.examen_2b_nb.adapters.RecyclerStudioAdapter
 import com.example.examen_2b_nb.firestore.FirestoreService
 import com.example.examen_2b_nb.model.Studio
 import com.google.firebase.firestore.DocumentChange
@@ -17,7 +16,6 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
-import java.text.SimpleDateFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,28 +36,29 @@ class MainActivity : AppCompatActivity() {
 
         studioArrayList = arrayListOf()
 
-        /*
-        db.collection("studio").get()
-            .addOnSuccessListener {
-                if(!it.isEmpty){
-                    for (data in it.documents){
-                        val studio:Studio? = data.toObject(Studio::class.java)
-                        if(studio != null){
-                            studioArrayList.add(studio)
-                        }
-                    }
-                    recyclerView.adapter = RecyclerStudioAdapter(studioArrayList)
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-            }
-            */
-
         recyclerStudioAdapter = RecyclerStudioAdapter(studioArrayList)
         recyclerView.adapter = recyclerStudioAdapter
 
-        eventChangeListener()
+        //eventChangeListener()
+        db.collection("studios")
+            .addSnapshotListener(object :EventListener<QuerySnapshot>{
+                override fun onEvent(
+                    value: QuerySnapshot?,
+                    error: FirebaseFirestoreException?
+                ) {
+                    if(error != null){
+                        Log.e("Firestore error",error.message.toString())
+                        return
+                    }
+                    for(dc:DocumentChange in value?.documentChanges!!){
+                        if(dc.type == DocumentChange.Type.ADDED){
+                            studioArrayList.add(dc.document.toObject(Studio::class.java))
+                        }
+                    }
+                    recyclerStudioAdapter.updateData(studioArrayList)
+                    //recyclerStudioAdapter.notifyDataSetChanged()
+                }
+            })
 
         val btnCreateStudio= findViewById<Button>(R.id.btn_create_studio)
         btnCreateStudio
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
     }
-
+    /*
     fun eventChangeListener(){
         db.collection("studios")
             .addSnapshotListener(object :EventListener<QuerySnapshot>{
@@ -90,5 +89,5 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
-
+    */
 }
