@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditStudioActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Studio"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <EditText
+        android:id="@+id/input_edit_st_name"
+        android:layout_width="291dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/input_edit_st_founder"
+        android:layout_width="289dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Founder"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/input_edit_st_found_date"
+        app:layout_constraintEnd_toEndOf="@+id/input_edit_st_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/input_edit_st_name"
+        app:layout_constraintTop_toBottomOf="@+id/input_edit_st_name"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <EditText
+        android:id="@+id/input_edit_st_found_date"
+        android:layout_width="291dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="48dp"
+        android:ems="10"
+        android:hint="Foundation date"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/input_edit_st_revenue"
+        app:layout_constraintEnd_toEndOf="@+id/input_edit_st_founder"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/input_edit_st_founder" />
+
+    <EditText
+        android:id="@+id/input_edit_st_revenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:ems="10"
+        android:hint="Revenue"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/input_edit_st_active"
+        app:layout_constraintEnd_toEndOf="@+id/input_edit_st_found_date"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/input_edit_st_found_date" />
+
+    <Button
+        android:id="@+id/btn_edit_studio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_edit_st_active"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <Button
+        android:id="@+id/btn_return_edit_st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Return"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toEndOf="@+id/btn_edit_studio"
+        app:layout_constraintTop_toBottomOf="@+id/input_edit_st_active"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <CheckBox
+        android:id="@+id/input_edit_st_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="192dp"
+        android:text="Active"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_edit_st_revenue"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/input_edit_st_revenue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

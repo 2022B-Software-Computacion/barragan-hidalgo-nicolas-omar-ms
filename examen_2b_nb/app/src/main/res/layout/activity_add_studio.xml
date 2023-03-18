@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddStudioActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Studio"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <EditText
+        android:id="@+id/input_st_name"
+        android:layout_width="291dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <EditText
+        android:id="@+id/input_st_founder"
+        android:layout_width="289dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Founder"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/input_st_found_date"
+        app:layout_constraintEnd_toEndOf="@+id/input_st_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/input_st_name"
+        app:layout_constraintTop_toBottomOf="@+id/input_st_name"
+        app:layout_constraintVertical_bias="0.466" />
+
+    <EditText
+        android:id="@+id/input_st_found_date"
+        android:layout_width="291dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Foundation date (yyyy/MM/dd)"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/input_st_revenue"
+        app:layout_constraintEnd_toEndOf="@+id/input_st_founder"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/input_st_founder" />
+
+    <EditText
+        android:id="@+id/input_st_revenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Revenue"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/input_st_active"
+        app:layout_constraintEnd_toEndOf="@+id/input_st_found_date"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/input_st_found_date"
+        app:layout_constraintTop_toBottomOf="@+id/input_st_name"
+        app:layout_constraintVertical_bias="0.805" />
+
+    <Button
+        android:id="@+id/btn_create_studio_fs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_st_active"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <Button
+        android:id="@+id/btn_return_create_st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Return"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/btn_create_studio_fs"
+        app:layout_constraintTop_toBottomOf="@+id/input_st_active"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <CheckBox
+        android:id="@+id/input_st_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:text="Active"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_st_revenue"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/input_st_revenue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
